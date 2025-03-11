@@ -17,8 +17,4 @@ public class UserCheckInDomainEntity {
     private UserDomainEntity user;
     private Instant timestamp;
     private Action action;
-    private Relation relation;
-    private Instant createdAt;
-
-
 }

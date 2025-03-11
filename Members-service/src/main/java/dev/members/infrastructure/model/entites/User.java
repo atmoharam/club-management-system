@@ -17,7 +17,7 @@ import java.util.UUID;
         @UniqueConstraint(name = "users_email_key", columnNames = {"email"}),
         @UniqueConstraint(name = "users_phone_key", columnNames = {"phone"})
 })
-public class User extends AggregateRoot {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @ColumnDefault("gen_random_uuid()")

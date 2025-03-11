@@ -15,7 +15,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "family_members", schema = "public")
-public class FamilyMember extends BaseEntity {
+public class FamilyMember{
     @Id
     @ColumnDefault("gen_random_uuid()")
     @Column(name = "id", nullable = false)

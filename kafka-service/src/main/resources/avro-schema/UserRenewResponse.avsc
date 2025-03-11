@@ -1,6 +1,10 @@
-/*
- * Comment for license information.
- */
-namespace UserRenewResponse;
-
-schema;
+{
+  "type": "record",
+  "name": "UserRenewMembershipResponse",
+  "namespace": "dev.kafka.avro",
+  "fields": [
+    { "name": "userId", "type": "string" },
+    { "name": "status", "type": "string" },
+    { "name": "expirationDate", "type": "string" }
+  ]
+}

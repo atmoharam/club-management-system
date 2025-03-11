@@ -6,7 +6,7 @@ import dev.members.domain.model.valueobject.Address;
 import dev.members.domain.model.valueobject.PhoneNumber;
 import lombok.*;
 
-import java.time.Instant;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -24,8 +24,15 @@ public class UserDomainEntity extends AggregateRoot {
     private Address address;
     private MembershipStatus membershipStatus;
     private LocalDate renewalDate;
-    private Instant createdAt;
-    private Instant updatedAt;
+
+    public void renewMembership() {
+        this.renewalDate = LocalDate.now().plusYears(1);
+        this.membershipStatus = MembershipStatus.ACTIVE;
+    }
+
+    public boolean isActive() {
+        return membershipStatus == MembershipStatus.ACTIVE;
+    }
 
     @Override
     public int hashCode() {

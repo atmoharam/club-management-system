@@ -1,6 +1,10 @@
-/*
- * Comment for license information.
- */
-namespace UserSubscribeSportRequest;
-
-schema;
+{
+  "type": "record",
+  "name": "UserSubscribeSportRequest",
+  "namespace": "dev.kafka.avro",
+  "fields": [
+    { "name": "userId", "type": "string" },
+    { "name": "sportId", "type": "string" },
+    { "name": "subscriptionDate", "type": "long", "logicalType": "timestamp-millis" }
+  ]
+}

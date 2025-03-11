@@ -1,6 +1,11 @@
-/*
- * Comment for license information.
- */
-namespace SecurityAction;
-
-schema;
+{
+  "type": "record",
+  "name": "SecurityAction",
+  "namespace": "dev.kafka.avro",
+  "fields": [
+    { "name": "actionId", "type": "string" },
+    { "name": "userId", "type": "string" },
+    { "name": "actionType", "type": "string" },
+    { "name": "timestamp", "type": "long", "logicalType": "timestamp-millis" }
+  ]
+}

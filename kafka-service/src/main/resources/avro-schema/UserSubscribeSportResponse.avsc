@@ -1,6 +1,10 @@
-/*
- * Comment for license information.
- */
-namespace UserSubscribeSportResponse;
-
-schema;
+{
+  "type": "record",
+  "name": "UserSubscribeSportResponse",
+  "namespace": "dev.kafka.avro",
+  "fields": [
+    { "name": "userId", "type": "string" },
+    { "name": "sportId", "type": "string" },
+    { "name": "status", "type": "string" }
+  ]
+}

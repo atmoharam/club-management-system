@@ -1,6 +1,9 @@
-/*
- * Comment for license information.
- */
-namespace UserRenewRequest;
-
-schema;
+{
+  "type": "record",
+  "name": "UserRenewMembershipRequest",
+  "namespace": "dev.kafka.avro",
+  "fields": [
+    { "name": "userId", "type": "string" },
+    { "name": "requestTimestamp", "type": "long", "logicalType": "timestamp-millis" }
+  ]
+}

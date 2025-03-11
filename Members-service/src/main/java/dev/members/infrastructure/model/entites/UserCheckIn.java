@@ -15,7 +15,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "user_check_ins", schema = "public")
-public class UserCheckIn extends BaseEntity {
+public class UserCheckIn{
     @Id
     @ColumnDefault("gen_random_uuid()")
     @Column(name = "id", nullable = false)

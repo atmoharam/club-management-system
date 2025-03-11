@@ -8,11 +8,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @Setter
 @Getter
-@Builder
+@Builder(toBuilder = true)
 public class FamilyMemberDomainEntity {
     private UUID id;
     private UserDomainEntity user;
     private UserDomainEntity familyMember;
 
+    public void AddFamilyMember(UserDomainEntity User) {
+        this.familyMember = User;
+    }
 
 }
