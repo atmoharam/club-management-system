@@ -7,6 +7,7 @@ import dev.members.domain.model.valueobject.PhoneNumber;
 import lombok.*;
 
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -24,14 +25,27 @@ public class UserDomainEntity extends AggregateRoot {
     private Address address;
     private MembershipStatus membershipStatus;
     private LocalDate renewalDate;
+    private Instant createdAt;
+    private Instant updatedAt;
+
 
     public void renewMembership() {
         this.renewalDate = LocalDate.now().plusYears(1);
-        this.membershipStatus = MembershipStatus.ACTIVE;
+        this.membershipStatus = MembershipStatus.Active;
     }
 
+    public void initRenewMembership(){
+        this.membershipStatus = MembershipStatus.Pending;
+    }
+
+
     public boolean isActive() {
-        return membershipStatus == MembershipStatus.ACTIVE;
+        return membershipStatus == MembershipStatus.Active;
+    }
+
+    public String getFullAddress()
+    {
+        return address.getCity() + "," + address.getStreet() + "," + address.getZip();
     }
 
     @Override

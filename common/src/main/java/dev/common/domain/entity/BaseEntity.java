@@ -1,3 +1,3 @@
 package dev.common.domain.entity;
 
-public abstract class BaseEntity {}
+public interface BaseEntity {}

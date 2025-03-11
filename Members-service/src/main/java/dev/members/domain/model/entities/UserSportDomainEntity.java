@@ -15,8 +15,4 @@ public class UserSportDomainEntity {
     private UUID sportId;
     private Instant subscribedAt;
 
-    public void SubacribeSport(UUID sportId) {
-        this.sportId = sportId;
-    }
-
 }

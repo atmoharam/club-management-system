@@ -1,7 +1,16 @@
 package dev.members.interface_adapters.rest;
 
+import dev.kafka.avro.UserRenewMembershipRequest;
+import dev.members.application.service.CreateNewMemberUseCase;
+import dev.members.application.service.CreateRelationshipUseCase;
 import dev.members.application.service.RenewMembershipUseCase;
+import dev.members.infrastructure.messaging.out.UserRenewalRequestPublisher;
+import dev.members.interface_adapters.dto.CreateUserDTO;
+import dev.members.interface_adapters.dto.RelationDTO;
+import dev.members.interface_adapters.dto.RenewMembershipDTO;
+import dev.members.interface_adapters.mapper.UserApiMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,15 +20,38 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api")
+@RequiredArgsConstructor
+@RequestMapping("/member")
 public class UserRenewMembership {
-    private final RenewMembershipUseCase renewMembershipUseCase = new RenewMembershipUseCase();
+    @Autowired
+    private final RenewMembershipUseCase renewMembershipUseCase;
+    @Autowired
+    private final CreateNewMemberUseCase createNewMemberUseCase;
+    @Autowired
+    private final CreateRelationshipUseCase createRelationshipUseCase;
+
+    @PostMapping("/renew-membership")
+    public ResponseEntity<String> renewMembership(@RequestBody RenewMembershipDTO id) {
+        renewMembershipUseCase.execute(UUID.fromString(id.getUserId()));
+        return ResponseEntity.ok("HI");
+    }
 
     @PostMapping
-    public ResponseEntity<String> renewMembership(@RequestBody String userId) {
-        UUID uuid = UUID.fromString(userId);
-        renewMembershipUseCase.execute(uuid);
-        return ResponseEntity.ok("HI");
+    public ResponseEntity<String> creteUser(@RequestBody CreateUserDTO userDTO) {
+        UserApiMapper mapper = new UserApiMapper();
+        createNewMemberUseCase.
+                createNewUser(mapper.userRequestDTOtoUserDomian(userDTO));
+        return ResponseEntity.ok("user created successfully");
+
+    }
+
+    @PostMapping("/relationship")
+    public ResponseEntity<String> relationship(@RequestBody RelationDTO relationDTO) {
+        createRelationshipUseCase.
+                execute(UUID.fromString(relationDTO.getFirstUserId())
+                ,UUID.fromString(relationDTO.getSecondUserId()),
+                        relationDTO.getRelationType());
+        return ResponseEntity.ok("relationship created successfully");
     }
 
 }

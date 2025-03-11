@@ -9,8 +9,8 @@ import dev.kafka.avro.UserRenewMembershipRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class UserRenewalRequestPublisher {
     private final KafkaTemplate<String, UserRenewMembershipRequest> kafkaTemplate;
 

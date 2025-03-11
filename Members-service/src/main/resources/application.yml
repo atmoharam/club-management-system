@@ -26,7 +26,7 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
 
     consumer:
-      group-id: demo-group
+      group-id: club-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer

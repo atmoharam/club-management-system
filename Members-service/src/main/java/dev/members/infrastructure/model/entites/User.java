@@ -2,8 +2,7 @@ package dev.members.infrastructure.model.entites;
 
 import dev.common.domain.entity.AggregateRoot;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
@@ -13,6 +12,9 @@ import java.util.UUID;
 @Setter
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "users", schema = "public", uniqueConstraints = {
         @UniqueConstraint(name = "users_email_key", columnNames = {"email"}),
         @UniqueConstraint(name = "users_phone_key", columnNames = {"phone"})
