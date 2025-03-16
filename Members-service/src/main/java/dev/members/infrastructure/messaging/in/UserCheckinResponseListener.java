@@ -1,9 +1,8 @@
 package dev.members.infrastructure.messaging.in;
 
 
-import dev.kafka.avro.SecurityAction;
-import dev.kafka.avro.UserRenewMembershipResponse;
 import dev.kafka.service.configuration.Topics;
+import dev.kafka.service.model.dev.kafka.avro.SecurityAction;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

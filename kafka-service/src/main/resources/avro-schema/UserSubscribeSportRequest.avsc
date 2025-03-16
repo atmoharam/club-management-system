@@ -4,7 +4,6 @@
   "namespace": "dev.kafka.avro",
   "fields": [
     { "name": "userId", "type": "string" },
-    { "name": "sportId", "type": "string" },
-    { "name": "subscriptionDate", "type": "long", "logicalType": "timestamp-millis" }
+    { "name": "sportId", "type": "string" }
   ]
 }

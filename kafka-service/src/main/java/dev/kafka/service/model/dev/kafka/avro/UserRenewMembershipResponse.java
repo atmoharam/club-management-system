@@ -3,8 +3,8 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package dev.kafka.avro;
-
+package dev.kafka.service.model.dev.kafka.avro;
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -16,7 +16,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
   private static final long serialVersionUID = 9042968966238975929L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRenewMembershipResponse\",\"namespace\":\"dev.kafka.avro\",\"fields\":[{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"status\",\"type\":\"string\"},{\"name\":\"expirationDate\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRenewMembershipResponse\",\"namespace\":\"dev.kafka.service.model.dev.kafka.avro\",\"fields\":[{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"status\",\"type\":\"string\"},{\"name\":\"expirationDate\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -173,8 +173,8 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
    * Creates a new UserRenewMembershipResponse RecordBuilder.
    * @return A new UserRenewMembershipResponse RecordBuilder
    */
-  public static dev.kafka.avro.UserRenewMembershipResponse.Builder newBuilder() {
-    return new dev.kafka.avro.UserRenewMembershipResponse.Builder();
+  public static dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder newBuilder() {
+    return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder();
   }
 
   /**
@@ -182,11 +182,11 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
    * @param other The existing builder to copy.
    * @return A new UserRenewMembershipResponse RecordBuilder
    */
-  public static dev.kafka.avro.UserRenewMembershipResponse.Builder newBuilder(dev.kafka.avro.UserRenewMembershipResponse.Builder other) {
+  public static dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder other) {
     if (other == null) {
-      return new dev.kafka.avro.UserRenewMembershipResponse.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder();
     } else {
-      return new dev.kafka.avro.UserRenewMembershipResponse.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder(other);
     }
   }
 
@@ -195,11 +195,11 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
    * @param other The existing instance to copy.
    * @return A new UserRenewMembershipResponse RecordBuilder
    */
-  public static dev.kafka.avro.UserRenewMembershipResponse.Builder newBuilder(dev.kafka.avro.UserRenewMembershipResponse other) {
+  public static dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse other) {
     if (other == null) {
-      return new dev.kafka.avro.UserRenewMembershipResponse.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder();
     } else {
-      return new dev.kafka.avro.UserRenewMembershipResponse.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder(other);
     }
   }
 
@@ -223,7 +223,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(dev.kafka.avro.UserRenewMembershipResponse.Builder other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.userId)) {
         this.userId = data().deepCopy(fields()[0].schema(), other.userId);
@@ -243,7 +243,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
      * Creates a Builder by copying an existing UserRenewMembershipResponse instance
      * @param other The existing instance to copy.
      */
-    private Builder(dev.kafka.avro.UserRenewMembershipResponse other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.userId)) {
         this.userId = data().deepCopy(fields()[0].schema(), other.userId);
@@ -273,7 +273,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
       * @param value The value of 'userId'.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipResponse.Builder setUserId(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder setUserId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.userId = value;
       fieldSetFlags()[0] = true;
@@ -293,7 +293,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
       * Clears the value of the 'userId' field.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipResponse.Builder clearUserId() {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder clearUserId() {
       userId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -313,7 +313,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
       * @param value The value of 'status'.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipResponse.Builder setStatus(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder setStatus(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.status = value;
       fieldSetFlags()[1] = true;
@@ -333,7 +333,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
       * Clears the value of the 'status' field.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipResponse.Builder clearStatus() {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder clearStatus() {
       status = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -353,7 +353,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
       * @param value The value of 'expirationDate'.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipResponse.Builder setExpirationDate(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder setExpirationDate(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.expirationDate = value;
       fieldSetFlags()[2] = true;
@@ -373,7 +373,7 @@ public class UserRenewMembershipResponse extends org.apache.avro.specific.Specif
       * Clears the value of the 'expirationDate' field.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipResponse.Builder clearExpirationDate() {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse.Builder clearExpirationDate() {
       expirationDate = null;
       fieldSetFlags()[2] = false;
       return this;

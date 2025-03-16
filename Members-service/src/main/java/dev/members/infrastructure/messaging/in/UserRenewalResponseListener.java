@@ -1,9 +1,8 @@
 package dev.members.infrastructure.messaging.in;
 
-import dev.kafka.avro.UserRenewMembershipResponse;
 import dev.kafka.service.configuration.Topics;
 import dev.members.application.service.RenewMembershipUseCase;
-import dev.members.infrastructure.messaging.out.UserRenewalRequestPublisher;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;

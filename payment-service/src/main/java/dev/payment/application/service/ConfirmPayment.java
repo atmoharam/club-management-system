@@ -1,8 +1,8 @@
 package dev.payment.application.service;
 
 import dev.common.domain.cons.PaymentStatus;
-import dev.kafka.avro.UserRenewMembershipRequest;
-import dev.kafka.avro.UserRenewMembershipResponse;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse;
 import dev.payment.domain.model.entites.MembershipRenewalDomainEntity;
 import dev.payment.domain.model.entites.PaymentDomainEntity;
 import dev.payment.domain.service.MembershipRenewalService;
@@ -10,14 +10,12 @@ import dev.payment.domain.service.PaymentService;
 import dev.payment.infrastructure.adapter.MembershipRenewalDB;
 import dev.payment.infrastructure.adapter.PaymentDB;
 import dev.payment.infrastructure.messaging.out.UserRenewMembershipPublisher;
-import dev.payment.infrastructure.model.entity.Payment;
 import dev.payment.infrastructure.model.mapper.MembershipRenewalMapper;
 import dev.payment.infrastructure.model.mapper.PaymentMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.Instant;

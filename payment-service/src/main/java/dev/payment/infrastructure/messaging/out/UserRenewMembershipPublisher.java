@@ -1,7 +1,6 @@
 package dev.payment.infrastructure.messaging.out;
 
-import dev.kafka.avro.UserRenewMembershipRequest;
-import dev.kafka.avro.UserRenewMembershipResponse;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;

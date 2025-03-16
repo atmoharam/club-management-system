@@ -1,7 +1,7 @@
 package dev.members.application.service;
 
-import dev.kafka.avro.UserRenewMembershipRequest;
-import dev.kafka.avro.UserRenewMembershipResponse;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipResponse;
 import dev.members.domain.model.entities.UserDomainEntity;
 import dev.members.domain.service.MebershipRenewalService;
 import dev.members.infrastructure.adapter.UserDB;
@@ -32,8 +32,7 @@ public class RenewMembershipUseCase {
         // 1 - create request to payment service
         UserRenewMembershipRequest userRenewMembershipRequest =
                 UserRenewMembershipRequest.newBuilder().
-                setUserId(memberId.toString()).
-                setRequestTimestamp(System.currentTimeMillis())
+                setUserId(memberId.toString())
                         .build();
 
         User user = userDB.

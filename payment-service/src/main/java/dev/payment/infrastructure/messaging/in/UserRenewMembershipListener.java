@@ -1,8 +1,7 @@
 package dev.payment.infrastructure.messaging.in;
 
-import dev.kafka.avro.SecurityAction;
-import dev.kafka.avro.UserRenewMembershipRequest;
 import dev.kafka.service.configuration.Topics;
+import dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest;
 import dev.payment.application.service.ConfirmPayment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

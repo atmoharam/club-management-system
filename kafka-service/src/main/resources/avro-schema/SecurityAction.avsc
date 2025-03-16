@@ -5,7 +5,6 @@
   "fields": [
     { "name": "actionId", "type": "string" },
     { "name": "userId", "type": "string" },
-    { "name": "actionType", "type": "string" },
-    { "name": "timestamp", "type": "long", "logicalType": "timestamp-millis" }
+    { "name": "actionType", "type": "string" }
   ]
 }

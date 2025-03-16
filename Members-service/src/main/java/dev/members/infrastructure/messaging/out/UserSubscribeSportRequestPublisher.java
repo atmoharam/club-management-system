@@ -1,9 +1,7 @@
 package dev.members.infrastructure.messaging.out;
 
-import dev.kafka.avro.UserRenewMembershipRequest;
-import dev.kafka.avro.UserSubscribeSportRequest;
+import dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;

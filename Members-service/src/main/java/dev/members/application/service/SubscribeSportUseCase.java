@@ -1,7 +1,7 @@
 package dev.members.application.service;
 
-import dev.kafka.avro.UserSubscribeSportRequest;
-import dev.kafka.avro.UserSubscribeSportResponse;
+import dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest;
+import dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportResponse;
 import dev.members.infrastructure.adapter.UserDB;
 import dev.members.infrastructure.adapter.UserSportDB;
 import dev.members.infrastructure.messaging.out.UserSubscribeSportRequestPublisher;
@@ -26,8 +26,7 @@ public class SubscribeSportUseCase {
     public void execute(UUID userId, UUID sportId) {
         UserSubscribeSportRequest userAvro = UserSubscribeSportRequest.newBuilder().
                 setUserId(userId.toString()).
-                setSportId(sportId.toString())
-                .setSubscriptionDate(System.currentTimeMillis()).
+                setSportId(sportId.toString()).
                 build();
         publisher.publish(userAvro);
 

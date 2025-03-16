@@ -3,8 +3,9 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package dev.kafka.avro;
+package dev.kafka.service.model.dev.kafka.avro;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -13,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class UserRenewMembershipRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5134605230328444039L;
+  private static final long serialVersionUID = 8136374146019974322L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRenewMembershipRequest\",\"namespace\":\"dev.kafka.avro\",\"fields\":[{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"requestTimestamp\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRenewMembershipRequest\",\"namespace\":\"dev.kafka.service.model.dev.kafka.avro\",\"fields\":[{\"name\":\"userId\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -73,7 +74,6 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
   }
 
   private java.lang.CharSequence userId;
-  private long requestTimestamp;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -85,11 +85,9 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
   /**
    * All-args constructor.
    * @param userId The new value for userId
-   * @param requestTimestamp The new value for requestTimestamp
    */
-  public UserRenewMembershipRequest(java.lang.CharSequence userId, java.lang.Long requestTimestamp) {
+  public UserRenewMembershipRequest(java.lang.CharSequence userId) {
     this.userId = userId;
-    this.requestTimestamp = requestTimestamp;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -98,7 +96,6 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return userId;
-    case 1: return requestTimestamp;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -108,7 +105,6 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: userId = (java.lang.CharSequence)value$; break;
-    case 1: requestTimestamp = (java.lang.Long)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -131,28 +127,11 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
   }
 
   /**
-   * Gets the value of the 'requestTimestamp' field.
-   * @return The value of the 'requestTimestamp' field.
-   */
-  public long getRequestTimestamp() {
-    return requestTimestamp;
-  }
-
-
-  /**
-   * Sets the value of the 'requestTimestamp' field.
-   * @param value the value to set.
-   */
-  public void setRequestTimestamp(long value) {
-    this.requestTimestamp = value;
-  }
-
-  /**
    * Creates a new UserRenewMembershipRequest RecordBuilder.
    * @return A new UserRenewMembershipRequest RecordBuilder
    */
-  public static dev.kafka.avro.UserRenewMembershipRequest.Builder newBuilder() {
-    return new dev.kafka.avro.UserRenewMembershipRequest.Builder();
+  public static dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder newBuilder() {
+    return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder();
   }
 
   /**
@@ -160,11 +139,11 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
    * @param other The existing builder to copy.
    * @return A new UserRenewMembershipRequest RecordBuilder
    */
-  public static dev.kafka.avro.UserRenewMembershipRequest.Builder newBuilder(dev.kafka.avro.UserRenewMembershipRequest.Builder other) {
+  public static dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder other) {
     if (other == null) {
-      return new dev.kafka.avro.UserRenewMembershipRequest.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder();
     } else {
-      return new dev.kafka.avro.UserRenewMembershipRequest.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder(other);
     }
   }
 
@@ -173,11 +152,11 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
    * @param other The existing instance to copy.
    * @return A new UserRenewMembershipRequest RecordBuilder
    */
-  public static dev.kafka.avro.UserRenewMembershipRequest.Builder newBuilder(dev.kafka.avro.UserRenewMembershipRequest other) {
+  public static dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest other) {
     if (other == null) {
-      return new dev.kafka.avro.UserRenewMembershipRequest.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder();
     } else {
-      return new dev.kafka.avro.UserRenewMembershipRequest.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder(other);
     }
   }
 
@@ -189,7 +168,6 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
     implements org.apache.avro.data.RecordBuilder<UserRenewMembershipRequest> {
 
     private java.lang.CharSequence userId;
-    private long requestTimestamp;
 
     /** Creates a new Builder */
     private Builder() {
@@ -200,15 +178,11 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(dev.kafka.avro.UserRenewMembershipRequest.Builder other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.userId)) {
         this.userId = data().deepCopy(fields()[0].schema(), other.userId);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
-      }
-      if (isValidValue(fields()[1], other.requestTimestamp)) {
-        this.requestTimestamp = data().deepCopy(fields()[1].schema(), other.requestTimestamp);
-        fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
     }
 
@@ -216,15 +190,11 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
      * Creates a Builder by copying an existing UserRenewMembershipRequest instance
      * @param other The existing instance to copy.
      */
-    private Builder(dev.kafka.avro.UserRenewMembershipRequest other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.userId)) {
         this.userId = data().deepCopy(fields()[0].schema(), other.userId);
         fieldSetFlags()[0] = true;
-      }
-      if (isValidValue(fields()[1], other.requestTimestamp)) {
-        this.requestTimestamp = data().deepCopy(fields()[1].schema(), other.requestTimestamp);
-        fieldSetFlags()[1] = true;
       }
     }
 
@@ -242,7 +212,7 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
       * @param value The value of 'userId'.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipRequest.Builder setUserId(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder setUserId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.userId = value;
       fieldSetFlags()[0] = true;
@@ -262,48 +232,9 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
       * Clears the value of the 'userId' field.
       * @return This builder.
       */
-    public dev.kafka.avro.UserRenewMembershipRequest.Builder clearUserId() {
+    public dev.kafka.service.model.dev.kafka.avro.UserRenewMembershipRequest.Builder clearUserId() {
       userId = null;
       fieldSetFlags()[0] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'requestTimestamp' field.
-      * @return The value.
-      */
-    public long getRequestTimestamp() {
-      return requestTimestamp;
-    }
-
-
-    /**
-      * Sets the value of the 'requestTimestamp' field.
-      * @param value The value of 'requestTimestamp'.
-      * @return This builder.
-      */
-    public dev.kafka.avro.UserRenewMembershipRequest.Builder setRequestTimestamp(long value) {
-      validate(fields()[1], value);
-      this.requestTimestamp = value;
-      fieldSetFlags()[1] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'requestTimestamp' field has been set.
-      * @return True if the 'requestTimestamp' field has been set, false otherwise.
-      */
-    public boolean hasRequestTimestamp() {
-      return fieldSetFlags()[1];
-    }
-
-
-    /**
-      * Clears the value of the 'requestTimestamp' field.
-      * @return This builder.
-      */
-    public dev.kafka.avro.UserRenewMembershipRequest.Builder clearRequestTimestamp() {
-      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -313,7 +244,6 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
       try {
         UserRenewMembershipRequest record = new UserRenewMembershipRequest();
         record.userId = fieldSetFlags()[0] ? this.userId : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.requestTimestamp = fieldSetFlags()[1] ? this.requestTimestamp : (java.lang.Long) defaultValue(fields()[1]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -348,8 +278,6 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
   {
     out.writeString(this.userId);
 
-    out.writeLong(this.requestTimestamp);
-
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -359,17 +287,11 @@ public class UserRenewMembershipRequest extends org.apache.avro.specific.Specifi
     if (fieldOrder == null) {
       this.userId = in.readString(this.userId instanceof Utf8 ? (Utf8)this.userId : null);
 
-      this.requestTimestamp = in.readLong();
-
     } else {
-      for (int i = 0; i < 2; i++) {
+      for (int i = 0; i < 1; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.userId = in.readString(this.userId instanceof Utf8 ? (Utf8)this.userId : null);
-          break;
-
-        case 1:
-          this.requestTimestamp = in.readLong();
           break;
 
         default:

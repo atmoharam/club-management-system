@@ -3,8 +3,9 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package dev.kafka.avro;
+package dev.kafka.service.model.dev.kafka.avro;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -13,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8758923245584795683L;
+  private static final long serialVersionUID = -7549134407811335818L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SecurityAction\",\"namespace\":\"dev.kafka.avro\",\"fields\":[{\"name\":\"actionId\",\"type\":\"string\"},{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"actionType\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SecurityAction\",\"namespace\":\"dev.kafka.service.model.dev.kafka.avro\",\"fields\":[{\"name\":\"actionId\",\"type\":\"string\"},{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"actionType\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -75,7 +76,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
   private java.lang.CharSequence actionId;
   private java.lang.CharSequence userId;
   private java.lang.CharSequence actionType;
-  private long timestamp;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -89,13 +89,11 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
    * @param actionId The new value for actionId
    * @param userId The new value for userId
    * @param actionType The new value for actionType
-   * @param timestamp The new value for timestamp
    */
-  public SecurityAction(java.lang.CharSequence actionId, java.lang.CharSequence userId, java.lang.CharSequence actionType, java.lang.Long timestamp) {
+  public SecurityAction(java.lang.CharSequence actionId, java.lang.CharSequence userId, java.lang.CharSequence actionType) {
     this.actionId = actionId;
     this.userId = userId;
     this.actionType = actionType;
-    this.timestamp = timestamp;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -106,7 +104,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
     case 0: return actionId;
     case 1: return userId;
     case 2: return actionType;
-    case 3: return timestamp;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -118,7 +115,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
     case 0: actionId = (java.lang.CharSequence)value$; break;
     case 1: userId = (java.lang.CharSequence)value$; break;
     case 2: actionType = (java.lang.CharSequence)value$; break;
-    case 3: timestamp = (java.lang.Long)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -175,28 +171,11 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
   }
 
   /**
-   * Gets the value of the 'timestamp' field.
-   * @return The value of the 'timestamp' field.
-   */
-  public long getTimestamp() {
-    return timestamp;
-  }
-
-
-  /**
-   * Sets the value of the 'timestamp' field.
-   * @param value the value to set.
-   */
-  public void setTimestamp(long value) {
-    this.timestamp = value;
-  }
-
-  /**
    * Creates a new SecurityAction RecordBuilder.
    * @return A new SecurityAction RecordBuilder
    */
-  public static dev.kafka.avro.SecurityAction.Builder newBuilder() {
-    return new dev.kafka.avro.SecurityAction.Builder();
+  public static dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder newBuilder() {
+    return new dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder();
   }
 
   /**
@@ -204,11 +183,11 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
    * @param other The existing builder to copy.
    * @return A new SecurityAction RecordBuilder
    */
-  public static dev.kafka.avro.SecurityAction.Builder newBuilder(dev.kafka.avro.SecurityAction.Builder other) {
+  public static dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder other) {
     if (other == null) {
-      return new dev.kafka.avro.SecurityAction.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder();
     } else {
-      return new dev.kafka.avro.SecurityAction.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder(other);
     }
   }
 
@@ -217,11 +196,11 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
    * @param other The existing instance to copy.
    * @return A new SecurityAction RecordBuilder
    */
-  public static dev.kafka.avro.SecurityAction.Builder newBuilder(dev.kafka.avro.SecurityAction other) {
+  public static dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.SecurityAction other) {
     if (other == null) {
-      return new dev.kafka.avro.SecurityAction.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder();
     } else {
-      return new dev.kafka.avro.SecurityAction.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder(other);
     }
   }
 
@@ -235,7 +214,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
     private java.lang.CharSequence actionId;
     private java.lang.CharSequence userId;
     private java.lang.CharSequence actionType;
-    private long timestamp;
 
     /** Creates a new Builder */
     private Builder() {
@@ -246,7 +224,7 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(dev.kafka.avro.SecurityAction.Builder other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.actionId)) {
         this.actionId = data().deepCopy(fields()[0].schema(), other.actionId);
@@ -260,17 +238,13 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
         this.actionType = data().deepCopy(fields()[2].schema(), other.actionType);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.timestamp)) {
-        this.timestamp = data().deepCopy(fields()[3].schema(), other.timestamp);
-        fieldSetFlags()[3] = other.fieldSetFlags()[3];
-      }
     }
 
     /**
      * Creates a Builder by copying an existing SecurityAction instance
      * @param other The existing instance to copy.
      */
-    private Builder(dev.kafka.avro.SecurityAction other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.SecurityAction other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.actionId)) {
         this.actionId = data().deepCopy(fields()[0].schema(), other.actionId);
@@ -283,10 +257,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       if (isValidValue(fields()[2], other.actionType)) {
         this.actionType = data().deepCopy(fields()[2].schema(), other.actionType);
         fieldSetFlags()[2] = true;
-      }
-      if (isValidValue(fields()[3], other.timestamp)) {
-        this.timestamp = data().deepCopy(fields()[3].schema(), other.timestamp);
-        fieldSetFlags()[3] = true;
       }
     }
 
@@ -304,7 +274,7 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'actionId'.
       * @return This builder.
       */
-    public dev.kafka.avro.SecurityAction.Builder setActionId(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder setActionId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.actionId = value;
       fieldSetFlags()[0] = true;
@@ -324,7 +294,7 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'actionId' field.
       * @return This builder.
       */
-    public dev.kafka.avro.SecurityAction.Builder clearActionId() {
+    public dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder clearActionId() {
       actionId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -344,7 +314,7 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'userId'.
       * @return This builder.
       */
-    public dev.kafka.avro.SecurityAction.Builder setUserId(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder setUserId(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.userId = value;
       fieldSetFlags()[1] = true;
@@ -364,7 +334,7 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'userId' field.
       * @return This builder.
       */
-    public dev.kafka.avro.SecurityAction.Builder clearUserId() {
+    public dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder clearUserId() {
       userId = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -384,7 +354,7 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'actionType'.
       * @return This builder.
       */
-    public dev.kafka.avro.SecurityAction.Builder setActionType(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder setActionType(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.actionType = value;
       fieldSetFlags()[2] = true;
@@ -404,48 +374,9 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'actionType' field.
       * @return This builder.
       */
-    public dev.kafka.avro.SecurityAction.Builder clearActionType() {
+    public dev.kafka.service.model.dev.kafka.avro.SecurityAction.Builder clearActionType() {
       actionType = null;
       fieldSetFlags()[2] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'timestamp' field.
-      * @return The value.
-      */
-    public long getTimestamp() {
-      return timestamp;
-    }
-
-
-    /**
-      * Sets the value of the 'timestamp' field.
-      * @param value The value of 'timestamp'.
-      * @return This builder.
-      */
-    public dev.kafka.avro.SecurityAction.Builder setTimestamp(long value) {
-      validate(fields()[3], value);
-      this.timestamp = value;
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'timestamp' field has been set.
-      * @return True if the 'timestamp' field has been set, false otherwise.
-      */
-    public boolean hasTimestamp() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'timestamp' field.
-      * @return This builder.
-      */
-    public dev.kafka.avro.SecurityAction.Builder clearTimestamp() {
-      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -457,7 +388,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
         record.actionId = fieldSetFlags()[0] ? this.actionId : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.userId = fieldSetFlags()[1] ? this.userId : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.actionType = fieldSetFlags()[2] ? this.actionType : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.timestamp = fieldSetFlags()[3] ? this.timestamp : (java.lang.Long) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -496,8 +426,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
 
     out.writeString(this.actionType);
 
-    out.writeLong(this.timestamp);
-
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -511,10 +439,8 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
 
       this.actionType = in.readString(this.actionType instanceof Utf8 ? (Utf8)this.actionType : null);
 
-      this.timestamp = in.readLong();
-
     } else {
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 3; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.actionId = in.readString(this.actionId instanceof Utf8 ? (Utf8)this.actionId : null);
@@ -526,10 +452,6 @@ public class SecurityAction extends org.apache.avro.specific.SpecificRecordBase 
 
         case 2:
           this.actionType = in.readString(this.actionType instanceof Utf8 ? (Utf8)this.actionType : null);
-          break;
-
-        case 3:
-          this.timestamp = in.readLong();
           break;
 
         default:

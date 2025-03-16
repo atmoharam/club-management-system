@@ -1,11 +1,9 @@
 package dev.members.interface_adapters.rest;
 
-import dev.kafka.avro.UserRenewMembershipRequest;
 import dev.members.application.service.CreateNewMemberUseCase;
 import dev.members.application.service.CreateRelationshipUseCase;
 import dev.members.application.service.RenewMembershipUseCase;
 import dev.members.application.service.SubscribeSportUseCase;
-import dev.members.infrastructure.messaging.out.UserRenewalRequestPublisher;
 import dev.members.interface_adapters.dto.CreateUserDTO;
 import dev.members.interface_adapters.dto.RelationDTO;
 import dev.members.interface_adapters.dto.RenewMembershipDTO;

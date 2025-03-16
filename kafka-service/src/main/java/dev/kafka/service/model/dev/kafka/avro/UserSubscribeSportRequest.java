@@ -3,8 +3,9 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package dev.kafka.avro;
+package dev.kafka.service.model.dev.kafka.avro;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -12,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class UserSubscribeSportResponse extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8948434680988784201L;
+public class UserSubscribeSportRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -3166501601603689111L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserSubscribeSportResponse\",\"namespace\":\"dev.kafka.avro\",\"fields\":[{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"sportId\",\"type\":\"string\"},{\"name\":\"status\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserSubscribeSportRequest\",\"namespace\":\"dev.kafka.service.model.dev.kafka.avro\",\"fields\":[{\"name\":\"userId\",\"type\":\"string\"},{\"name\":\"sportId\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<UserSubscribeSportResponse> ENCODER =
-      new BinaryMessageEncoder<UserSubscribeSportResponse>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<UserSubscribeSportRequest> ENCODER =
+      new BinaryMessageEncoder<UserSubscribeSportRequest>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<UserSubscribeSportResponse> DECODER =
-      new BinaryMessageDecoder<UserSubscribeSportResponse>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<UserSubscribeSportRequest> DECODER =
+      new BinaryMessageDecoder<UserSubscribeSportRequest>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<UserSubscribeSportResponse> getEncoder() {
+  public static BinaryMessageEncoder<UserSubscribeSportRequest> getEncoder() {
     return ENCODER;
   }
 
@@ -39,7 +40,7 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<UserSubscribeSportResponse> getDecoder() {
+  public static BinaryMessageDecoder<UserSubscribeSportRequest> getDecoder() {
     return DECODER;
   }
 
@@ -48,12 +49,12 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<UserSubscribeSportResponse> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<UserSubscribeSportResponse>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<UserSubscribeSportRequest> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<UserSubscribeSportRequest>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this UserSubscribeSportResponse to a ByteBuffer.
+   * Serializes this UserSubscribeSportRequest to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -62,37 +63,34 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
   }
 
   /**
-   * Deserializes a UserSubscribeSportResponse from a ByteBuffer.
+   * Deserializes a UserSubscribeSportRequest from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a UserSubscribeSportResponse instance decoded from the given buffer
+   * @return a UserSubscribeSportRequest instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static UserSubscribeSportResponse fromByteBuffer(
+  public static UserSubscribeSportRequest fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   private java.lang.CharSequence userId;
   private java.lang.CharSequence sportId;
-  private java.lang.CharSequence status;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public UserSubscribeSportResponse() {}
+  public UserSubscribeSportRequest() {}
 
   /**
    * All-args constructor.
    * @param userId The new value for userId
    * @param sportId The new value for sportId
-   * @param status The new value for status
    */
-  public UserSubscribeSportResponse(java.lang.CharSequence userId, java.lang.CharSequence sportId, java.lang.CharSequence status) {
+  public UserSubscribeSportRequest(java.lang.CharSequence userId, java.lang.CharSequence sportId) {
     this.userId = userId;
     this.sportId = sportId;
-    this.status = status;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -102,7 +100,6 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
     switch (field$) {
     case 0: return userId;
     case 1: return sportId;
-    case 2: return status;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -113,7 +110,6 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
     switch (field$) {
     case 0: userId = (java.lang.CharSequence)value$; break;
     case 1: sportId = (java.lang.CharSequence)value$; break;
-    case 2: status = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -153,66 +149,48 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
   }
 
   /**
-   * Gets the value of the 'status' field.
-   * @return The value of the 'status' field.
+   * Creates a new UserSubscribeSportRequest RecordBuilder.
+   * @return A new UserSubscribeSportRequest RecordBuilder
    */
-  public java.lang.CharSequence getStatus() {
-    return status;
-  }
-
-
-  /**
-   * Sets the value of the 'status' field.
-   * @param value the value to set.
-   */
-  public void setStatus(java.lang.CharSequence value) {
-    this.status = value;
+  public static dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder newBuilder() {
+    return new dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder();
   }
 
   /**
-   * Creates a new UserSubscribeSportResponse RecordBuilder.
-   * @return A new UserSubscribeSportResponse RecordBuilder
-   */
-  public static dev.kafka.avro.UserSubscribeSportResponse.Builder newBuilder() {
-    return new dev.kafka.avro.UserSubscribeSportResponse.Builder();
-  }
-
-  /**
-   * Creates a new UserSubscribeSportResponse RecordBuilder by copying an existing Builder.
+   * Creates a new UserSubscribeSportRequest RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new UserSubscribeSportResponse RecordBuilder
+   * @return A new UserSubscribeSportRequest RecordBuilder
    */
-  public static dev.kafka.avro.UserSubscribeSportResponse.Builder newBuilder(dev.kafka.avro.UserSubscribeSportResponse.Builder other) {
+  public static dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder other) {
     if (other == null) {
-      return new dev.kafka.avro.UserSubscribeSportResponse.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder();
     } else {
-      return new dev.kafka.avro.UserSubscribeSportResponse.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder(other);
     }
   }
 
   /**
-   * Creates a new UserSubscribeSportResponse RecordBuilder by copying an existing UserSubscribeSportResponse instance.
+   * Creates a new UserSubscribeSportRequest RecordBuilder by copying an existing UserSubscribeSportRequest instance.
    * @param other The existing instance to copy.
-   * @return A new UserSubscribeSportResponse RecordBuilder
+   * @return A new UserSubscribeSportRequest RecordBuilder
    */
-  public static dev.kafka.avro.UserSubscribeSportResponse.Builder newBuilder(dev.kafka.avro.UserSubscribeSportResponse other) {
+  public static dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder newBuilder(dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest other) {
     if (other == null) {
-      return new dev.kafka.avro.UserSubscribeSportResponse.Builder();
+      return new dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder();
     } else {
-      return new dev.kafka.avro.UserSubscribeSportResponse.Builder(other);
+      return new dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for UserSubscribeSportResponse instances.
+   * RecordBuilder for UserSubscribeSportRequest instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<UserSubscribeSportResponse>
-    implements org.apache.avro.data.RecordBuilder<UserSubscribeSportResponse> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<UserSubscribeSportRequest>
+    implements org.apache.avro.data.RecordBuilder<UserSubscribeSportRequest> {
 
     private java.lang.CharSequence userId;
     private java.lang.CharSequence sportId;
-    private java.lang.CharSequence status;
 
     /** Creates a new Builder */
     private Builder() {
@@ -223,7 +201,7 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(dev.kafka.avro.UserSubscribeSportResponse.Builder other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.userId)) {
         this.userId = data().deepCopy(fields()[0].schema(), other.userId);
@@ -233,17 +211,13 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
         this.sportId = data().deepCopy(fields()[1].schema(), other.sportId);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.status)) {
-        this.status = data().deepCopy(fields()[2].schema(), other.status);
-        fieldSetFlags()[2] = other.fieldSetFlags()[2];
-      }
     }
 
     /**
-     * Creates a Builder by copying an existing UserSubscribeSportResponse instance
+     * Creates a Builder by copying an existing UserSubscribeSportRequest instance
      * @param other The existing instance to copy.
      */
-    private Builder(dev.kafka.avro.UserSubscribeSportResponse other) {
+    private Builder(dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.userId)) {
         this.userId = data().deepCopy(fields()[0].schema(), other.userId);
@@ -252,10 +226,6 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
       if (isValidValue(fields()[1], other.sportId)) {
         this.sportId = data().deepCopy(fields()[1].schema(), other.sportId);
         fieldSetFlags()[1] = true;
-      }
-      if (isValidValue(fields()[2], other.status)) {
-        this.status = data().deepCopy(fields()[2].schema(), other.status);
-        fieldSetFlags()[2] = true;
       }
     }
 
@@ -273,7 +243,7 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
       * @param value The value of 'userId'.
       * @return This builder.
       */
-    public dev.kafka.avro.UserSubscribeSportResponse.Builder setUserId(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder setUserId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.userId = value;
       fieldSetFlags()[0] = true;
@@ -293,7 +263,7 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
       * Clears the value of the 'userId' field.
       * @return This builder.
       */
-    public dev.kafka.avro.UserSubscribeSportResponse.Builder clearUserId() {
+    public dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder clearUserId() {
       userId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -313,7 +283,7 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
       * @param value The value of 'sportId'.
       * @return This builder.
       */
-    public dev.kafka.avro.UserSubscribeSportResponse.Builder setSportId(java.lang.CharSequence value) {
+    public dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder setSportId(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.sportId = value;
       fieldSetFlags()[1] = true;
@@ -333,60 +303,19 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
       * Clears the value of the 'sportId' field.
       * @return This builder.
       */
-    public dev.kafka.avro.UserSubscribeSportResponse.Builder clearSportId() {
+    public dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest.Builder clearSportId() {
       sportId = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'status' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getStatus() {
-      return status;
-    }
-
-
-    /**
-      * Sets the value of the 'status' field.
-      * @param value The value of 'status'.
-      * @return This builder.
-      */
-    public dev.kafka.avro.UserSubscribeSportResponse.Builder setStatus(java.lang.CharSequence value) {
-      validate(fields()[2], value);
-      this.status = value;
-      fieldSetFlags()[2] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'status' field has been set.
-      * @return True if the 'status' field has been set, false otherwise.
-      */
-    public boolean hasStatus() {
-      return fieldSetFlags()[2];
-    }
-
-
-    /**
-      * Clears the value of the 'status' field.
-      * @return This builder.
-      */
-    public dev.kafka.avro.UserSubscribeSportResponse.Builder clearStatus() {
-      status = null;
-      fieldSetFlags()[2] = false;
-      return this;
-    }
-
     @Override
     @SuppressWarnings("unchecked")
-    public UserSubscribeSportResponse build() {
+    public UserSubscribeSportRequest build() {
       try {
-        UserSubscribeSportResponse record = new UserSubscribeSportResponse();
+        UserSubscribeSportRequest record = new UserSubscribeSportRequest();
         record.userId = fieldSetFlags()[0] ? this.userId : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.sportId = fieldSetFlags()[1] ? this.sportId : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.status = fieldSetFlags()[2] ? this.status : (java.lang.CharSequence) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -397,8 +326,8 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<UserSubscribeSportResponse>
-    WRITER$ = (org.apache.avro.io.DatumWriter<UserSubscribeSportResponse>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<UserSubscribeSportRequest>
+    WRITER$ = (org.apache.avro.io.DatumWriter<UserSubscribeSportRequest>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -406,8 +335,8 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<UserSubscribeSportResponse>
-    READER$ = (org.apache.avro.io.DatumReader<UserSubscribeSportResponse>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<UserSubscribeSportRequest>
+    READER$ = (org.apache.avro.io.DatumReader<UserSubscribeSportRequest>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -423,8 +352,6 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
 
     out.writeString(this.sportId);
 
-    out.writeString(this.status);
-
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -436,10 +363,8 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
 
       this.sportId = in.readString(this.sportId instanceof Utf8 ? (Utf8)this.sportId : null);
 
-      this.status = in.readString(this.status instanceof Utf8 ? (Utf8)this.status : null);
-
     } else {
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < 2; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.userId = in.readString(this.userId instanceof Utf8 ? (Utf8)this.userId : null);
@@ -447,10 +372,6 @@ public class UserSubscribeSportResponse extends org.apache.avro.specific.Specifi
 
         case 1:
           this.sportId = in.readString(this.sportId instanceof Utf8 ? (Utf8)this.sportId : null);
-          break;
-
-        case 2:
-          this.status = in.readString(this.status instanceof Utf8 ? (Utf8)this.status : null);
           break;
 
         default:
