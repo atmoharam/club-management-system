@@ -1,5 +1,6 @@
 package dev.members.infrastructure.messaging.out;
 
+import dev.kafka.service.configuration.Topics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ public class UserRenewalRequestPublisher {
 
     public void publish(UserRenewMembershipRequest userRenewMembershipRequest) {
         log.info("Publishing user renew membership request: {}", userRenewMembershipRequest);
-        kafkaTemplate.send("user-renew-membership-request", userRenewMembershipRequest).whenComplete(
+        kafkaTemplate.send(Topics.USER_RENEW_MEMBERSHIP_REQ, userRenewMembershipRequest).whenComplete(
                 (res ,ex) ->{
                     if (ex == null) {
                         log.info("Sent message=[{}] with offset=[{}]", userRenewMembershipRequest, res.getRecordMetadata().offset());

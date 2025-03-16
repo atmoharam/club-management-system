@@ -35,7 +35,6 @@ public class SubscribeSportUseCase {
     // 3 - receiving data from payment service
     public void execute(UserSubscribeSportResponse userSubscribeSportResponse) {
         // 4 - if success call service to create subscription
-
         User user = userDB.getUserByID(UUID.fromString(userSubscribeSportResponse.
                         getUserId().toString())).orElse(null);
 

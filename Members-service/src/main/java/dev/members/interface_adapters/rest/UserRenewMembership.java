@@ -4,10 +4,12 @@ import dev.kafka.avro.UserRenewMembershipRequest;
 import dev.members.application.service.CreateNewMemberUseCase;
 import dev.members.application.service.CreateRelationshipUseCase;
 import dev.members.application.service.RenewMembershipUseCase;
+import dev.members.application.service.SubscribeSportUseCase;
 import dev.members.infrastructure.messaging.out.UserRenewalRequestPublisher;
 import dev.members.interface_adapters.dto.CreateUserDTO;
 import dev.members.interface_adapters.dto.RelationDTO;
 import dev.members.interface_adapters.dto.RenewMembershipDTO;
+import dev.members.interface_adapters.dto.SubSportDTO;
 import dev.members.interface_adapters.mapper.UserApiMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class UserRenewMembership {
     private final CreateNewMemberUseCase createNewMemberUseCase;
     @Autowired
     private final CreateRelationshipUseCase createRelationshipUseCase;
+    @Autowired
+    private final SubscribeSportUseCase subscribeSportUseCase;
 
     @PostMapping("/renew-membership")
     public ResponseEntity<String> renewMembership(@RequestBody RenewMembershipDTO id) {
@@ -52,6 +56,15 @@ public class UserRenewMembership {
                 ,UUID.fromString(relationDTO.getSecondUserId()),
                         relationDTO.getRelationType());
         return ResponseEntity.ok("relationship created successfully");
+    }
+
+    @PostMapping("subscribe-sport")
+    public ResponseEntity<String> subscribeSport(@RequestBody SubSportDTO subSport){
+        subscribeSportUseCase.execute(
+                UUID.fromString(subSport.getUserID()),
+                UUID.fromString(subSport.getSportID())
+        );
+        return ResponseEntity.ok("subscribe sport created successfully");
     }
 
 }
