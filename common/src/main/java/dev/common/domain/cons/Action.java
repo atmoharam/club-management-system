@@ -1,6 +1,6 @@
 package dev.common.domain.cons;
 
 public enum Action {
-    CHECK_IN,
-    CHECK_OUT
+    Check_in,
+    Check_out
 }

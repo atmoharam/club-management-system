@@ -1,5 +1,6 @@
 package dev.sport.service.infrastructure.model.repository;
 
+import dev.sport.service.infrastructure.model.entites.SportSession;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 

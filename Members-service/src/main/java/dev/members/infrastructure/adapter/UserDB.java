@@ -1,6 +1,7 @@
 package dev.members.infrastructure.adapter;
 
 import dev.members.domain.repository.UserCheckinRepositoryInterface;
+import dev.members.domain.repository.UserRepositoryInterface;
 import dev.members.infrastructure.model.entites.User;
 import dev.members.infrastructure.model.repository.UserCheckinRepository;
 import dev.members.infrastructure.model.repository.UserRepository;
@@ -11,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UserDB implements UserCheckinRepositoryInterface {
+public class UserDB implements UserRepositoryInterface {
 
     private final UserRepository userRepository;
 

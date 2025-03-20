@@ -1,8 +1,7 @@
 package dev.sport.service.infrastructure.model.entites;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -13,6 +12,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "sport_sessions", schema = "public")
 public class SportSession {
     @Id
