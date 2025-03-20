@@ -1,7 +1,6 @@
 package dev.members.application.service;
 
 import dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportRequest;
-import dev.kafka.service.model.dev.kafka.avro.UserSubscribeSportResponse;
 import dev.members.infrastructure.adapter.UserDB;
 import dev.members.infrastructure.adapter.UserSportDB;
 import dev.members.infrastructure.messaging.out.UserSubscribeSportRequestPublisher;
@@ -23,7 +22,7 @@ public class SubscribeSportUseCase {
     @Autowired
     private UserDB userDB;
 
-    public void execute(UUID userId, UUID sportId) {
+    public void sending(UUID userId, UUID sportId) {
         UserSubscribeSportRequest userAvro = UserSubscribeSportRequest.newBuilder().
                 setUserId(userId.toString()).
                 setSportId(sportId.toString()).
@@ -32,14 +31,11 @@ public class SubscribeSportUseCase {
 
     }
     // 3 - receiving data from payment service
-    public void execute(UserSubscribeSportResponse userSubscribeSportResponse) {
-        // 4 - if success call service to create subscription
-        User user = userDB.getUserByID(UUID.fromString(userSubscribeSportResponse.
-                        getUserId().toString())).orElse(null);
+    public void execute(UUID userId , UUID sportId) {
+        User user = userDB.getUserByID(userId).orElse(null);
 
         UserSport userSport = UserSport.builder()
-                .sportId(UUID.fromString(userSubscribeSportResponse.
-                        getSportId().toString()))
+                .sportId(sportId)
                 .user(user)
                 .subscribedAt(Instant.now())
                 .build();

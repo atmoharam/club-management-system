@@ -2,6 +2,11 @@ spring:
   application:
     name: payment-service
 
+  spring:
+    devtools:
+      restart:
+        enabled = false:
+
   datasource:
     url: jdbc:postgresql://localhost:5433/payment_db
     username: postgres

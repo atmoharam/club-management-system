@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
 @Service
@@ -14,7 +15,9 @@ public class MembershipRenewalMapper {
         return MembershipRenewal.builder()
                 .userId(membershipRenewalDomainEntity.getUserId())
                 .renewalDate(LocalDate.from(membershipRenewalDomainEntity.
-                        getTimestamp()))
+                        getTimestamp().
+                        atZone(ZoneId.systemDefault()).toLocalDate()
+                ))
                 .amount(membershipRenewalDomainEntity.getAmount())
                 .build();
     }

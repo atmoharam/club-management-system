@@ -39,7 +39,7 @@ public class UserRenewMembership {
     }
 
     @PostMapping
-    public ResponseEntity<String> creteUser(@RequestBody CreateUserDTO userDTO) {
+    public ResponseEntity<String> createUser(@RequestBody CreateUserDTO userDTO) {
         UserApiMapper mapper = new UserApiMapper();
         createNewMemberUseCase.
                 createNewUser(mapper.userRequestDTOtoUserDomian(userDTO));
@@ -58,7 +58,7 @@ public class UserRenewMembership {
 
     @PostMapping("subscribe-sport")
     public ResponseEntity<String> subscribeSport(@RequestBody SubSportDTO subSport){
-        subscribeSportUseCase.execute(
+        subscribeSportUseCase.sending(
                 UUID.fromString(subSport.getUserID()),
                 UUID.fromString(subSport.getSportID())
         );

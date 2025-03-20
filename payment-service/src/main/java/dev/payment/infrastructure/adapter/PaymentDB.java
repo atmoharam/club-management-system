@@ -2,9 +2,10 @@ package dev.payment.infrastructure.adapter;
 
 import dev.payment.domain.repository.PaymentRepositoryInterface;
 import dev.payment.infrastructure.model.entity.Payment;
+import dev.payment.infrastructure.model.repository.PaymentRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
@@ -12,8 +13,11 @@ import org.springframework.stereotype.Service;
 @Builder
 public class PaymentDB implements PaymentRepositoryInterface {
 
+    @Autowired
+    private PaymentRepository paymentRepository;
+
     @Override
     public Payment save(Payment payment) {
-        return null;
+        return paymentRepository.save(payment);
     }
 }

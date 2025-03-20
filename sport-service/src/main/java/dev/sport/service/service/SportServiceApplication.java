@@ -1,4 +1,4 @@
-package dev.sport.service;
+package dev.sport.service.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
