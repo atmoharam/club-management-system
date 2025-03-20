@@ -2,8 +2,7 @@ package dev.members.infrastructure.model.entites;
 
 import dev.common.domain.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -14,6 +13,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user_check_ins", schema = "public")
 public class UserCheckIn{
     @Id

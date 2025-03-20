@@ -61,7 +61,7 @@ public class ConfirmPayment {
                         newBuilder().setUserId(membershipRenewalDomain.getUserId().toString()).
                         setExpirationDate(
                                 membershipRenewalDomain.getTimestamp()
-                                        .plus(30 , ChronoUnit.DAYS).toString()).
+                                        .plus(365, ChronoUnit.DAYS).toString()).
                         setStatus(PaymentStatus.Completed.toString()).
                         build();
 
