@@ -39,6 +39,6 @@ The system is designed using a combination of **DDD, Clean, and Hexagonal Archit
 1. Clone the repository:  
    ```sh
    git clone https://github.com/atmoharam/club-management-system.git  
-   cd club-management-system  
-  docker-compose up -d  
-  mvn clean install && docker-compose up  ```
+   cd club-management-system
+   docker-compose up -d
+   mvn clean install && docker-compose up
