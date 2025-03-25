@@ -28,7 +28,7 @@ The system is designed using a combination of **DDD, Clean, and Hexagonal Archit
 - **API Gateway** (Handles request routing, authentication, and rate limiting)  
 - **IP Limiting Filter in API Gateway** (Prevents excessive API requests per user)  
 - **Docker & Kubernetes (GKE)** (Containerization and orchestration)  
-- **PostgreSQL / MongoDB** (Each service has its own database)  
+- **PostgreSQL** (Each service has its own database)  
 
 ## Future Enhancements  
 - Implement **GraphQL** for efficient querying  
