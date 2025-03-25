@@ -2,6 +2,7 @@ package dev.members.interface_adapters.rest;
 
 import dev.members.application.service.MemberManagementUseCase;
 import dev.members.application.service.RenewMembershipUseCase;
+import dev.members.infrastructure.model.entites.User;
 import dev.members.interface_adapters.dto.CreateUserDTO;
 import dev.members.interface_adapters.dto.RenewMembershipDTO;
 import dev.members.interface_adapters.mapper.UserApiMapper;
@@ -9,10 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -61,5 +59,18 @@ public class UserRenewMembership {
 
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable UUID id) {
+        return ResponseEntity.ok(
+                memberManagementUseCase.findUserById(id)
+        );
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(
+                memberManagementUseCase.findUserByEmail(email)
+        );
+    }
 
 }

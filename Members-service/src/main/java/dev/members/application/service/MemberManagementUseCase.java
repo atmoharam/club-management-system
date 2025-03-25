@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -32,6 +33,14 @@ public class MemberManagementUseCase {
             user = userDB.saveUser(userMapper.userDomainToUser(userDomainEntity));
             renewMembershipUseCase.execute(user.getId());
         }
+    }
+
+    public User findUserByEmail(String email){
+        return userDB.getUserByEmail(email).orElse(null);
+    }
+
+    public User findUserById(UUID id){
+        return userDB.getUserByID(id).orElse(null);
     }
 
 }

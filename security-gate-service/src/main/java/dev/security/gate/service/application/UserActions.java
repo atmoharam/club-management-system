@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -88,6 +89,14 @@ public class UserActions {
                 .message("User" + userId + "/n"
                 +action + " from gate : " + gate)
                 .build();
+    }
+
+    public long onlineUserCount() {
+        return securityLogsDB.countCurrentCheckInsWithoutCheckOut();
+    }
+
+    public List<SecurityLog> gateActions(String gate) {
+        return securityLogsDB.findByGate(gate);
     }
 
 }

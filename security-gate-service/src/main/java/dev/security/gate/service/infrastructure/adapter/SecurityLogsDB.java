@@ -7,6 +7,7 @@ import dev.security.gate.service.infrastructure.model.repository.SecurityLogRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,8 +27,8 @@ public class SecurityLogsDB implements SecurityLogsRepositoryInterface {
     }
 
     @Override
-    public Optional<SecurityLog> findByGate(String gate) {
-        return securityLogRepository.findByGate(gate);
+    public List<SecurityLog> findByGate(String gate) {
+        return securityLogRepository.findAllByGate(gate);
     }
 
     @Override

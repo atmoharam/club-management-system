@@ -1,0 +1,230 @@
+<div class="container">
+  <h1>Admin Panel</h1>
+  
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Manage Sports</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="sportForm" (ngSubmit)="onSubmitSport()">
+            <input type="hidden" formControlName="id">
+            
+            <div class="mb-3">
+              <label for="sportName" class="form-label">Sport Name</label>
+              <input type="text" class="form-control" id="sportName" formControlName="name">
+            </div>
+            
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!sportForm.valid">
+              {{ sportForm.value.id ? 'Update Sport' : 'Add Sport' }}
+            </button>
+            
+            <button type="button" class="btn btn-secondary ms-2" *ngIf="sportForm.value.id" (click)="sportForm.reset()">
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2>Sports List</h2>
+          <span class="badge bg-primary">Online Users: {{ onlineUsersCount }}</span>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sport of sports">
+                <td>{{ sport.name }}</td>
+                <td>{{ sport.description }}</td>
+                <td>
+                  <button class="btn btn-sm btn-primary me-1" (click)="editSport(sport)">Edit</button>
+                  <button class="btn btn-sm btn-danger" (click)="deleteSport(sport.id)">Delete</button>
+                </td>
+              </tr>
+              <tr *ngIf="sports.length === 0">
+                <td colspan="3" class="text-center">No sports found</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Find Sessions by Sport Name</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="sportNameForm" (ngSubmit)="getSessionsBySportName()">
+            <div class="mb-3">
+              <label for="sportNameSearch" class="form-label">Sport Name</label>
+              <input type="text" class="form-control" id="sportNameSearch" formControlName="sportName">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!sportNameForm.valid">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Find Sessions by Trainer ID</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="trainerIdForm" (ngSubmit)="getSessionsByTrainerId()">
+            <div class="mb-3">
+              <label for="trainerId" class="form-label">Trainer ID</label>
+              <input type="text" class="form-control" id="trainerId" formControlName="trainerId">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!trainerIdForm.valid">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Find Session by ID</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="sessionIdForm" (ngSubmit)="getSessionById()">
+            <div class="mb-3">
+              <label for="sessionId" class="form-label">Session ID</label>
+              <input type="text" class="form-control" id="sessionId" formControlName="sessionId">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!sessionIdForm.valid">Search</button>
+          </form>
+          
+          <div *ngIf="selectedSession" class="mt-3">
+            <h3>Session Details</h3>
+            <div class="card">
+              <div class="card-body">
+                <p><strong>ID:</strong> {{ selectedSession.id }}</p>
+                <p><strong>Sport:</strong> {{ selectedSession.sport.name }}</p>
+                <p><strong>Trainer ID:</strong> {{ selectedSession.trainerId }}</p>
+                <p><strong>Start Time:</strong> {{ selectedSession.startTime | date:'medium' }}</p>
+                <p><strong>End Time:</strong> {{ selectedSession.endTime | date:'medium' }}</p>
+                <p><strong>Location:</strong> {{ selectedSession.location }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Find Actions by Gate</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="gateForm" (ngSubmit)="getActionsByGate()">
+            <div class="mb-3">
+              <label for="gate" class="form-label">Gate</label>
+              <input type="text" class="form-control" id="gate" formControlName="gate">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!gateForm.valid">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4" *ngIf="sportSessions.length > 0">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2>Sport Sessions</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Sport</th>
+                <th>Trainer ID</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let session of sportSessions">
+                <td>{{ session.id }}</td>
+                <td>{{ session.sport.name }}</td>
+                <td>{{ session.trainerId }}</td>
+                <td>{{ session.startTime | date:'medium' }}</td>
+                <td>{{ session.endTime | date:'medium' }}</td>
+                <td>{{ session.location }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4" *ngIf="securityActions.length > 0">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2>Security Actions</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Gate</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let action of securityActions">
+                <td>{{ action.id }}</td>
+                <td>{{ action.userId }}</td>
+                <td>{{ action.gate }}</td>
+                <td>{{ action.timestamp | date:'medium' }}</td>
+                <td>{{ action.action }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="message" class="alert alert-info mt-3">
+    {{ message }}
+  </div>
+</div>
+

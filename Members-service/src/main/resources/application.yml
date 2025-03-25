@@ -34,4 +34,3 @@ spring:
         specific.avro.reader: true
 server:
   port: 8568
-

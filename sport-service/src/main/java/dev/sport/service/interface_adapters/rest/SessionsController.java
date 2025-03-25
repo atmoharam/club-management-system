@@ -12,11 +12,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/sport/session")
 public class SessionsController {
-    final SessionUseCase sessionUseCase;
     @Autowired
-    public SessionsController(SessionUseCase sessionUseCase) {
-        this.sessionUseCase = sessionUseCase;
-    }
+    SessionUseCase sessionUseCase;
 
     @PostMapping
     public String session(@RequestBody SessionDTO object) {

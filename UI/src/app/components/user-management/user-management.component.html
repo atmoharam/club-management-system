@@ -1,0 +1,177 @@
+<div class="container" *ngIf="currentUser; else noUser">
+  <h1>User Management</h1>
+  
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>User Details</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>ID:</strong> {{ currentUser.id }}</p>
+          <p><strong>Name:</strong> {{ currentUser.name }}</p>
+          <p><strong>Email:</strong> {{ currentUser.email }}</p>
+          <p><strong>Date of Birth:</strong> {{ currentUser.dateOfBirth }}</p>
+          <p><strong>Membership Status:</strong> {{ currentUser.membershipStatus }}</p>
+          <p><strong>Renewal Date:</strong> {{ currentUser.renewalDate }}</p>
+          
+          <button class="btn btn-primary" (click)="renewMembership()">Renew Membership</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Add Relationship</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="relationshipForm" (ngSubmit)="addRelationship()">
+            <div class="mb-3">
+              <label for="secondUserId" class="form-label">Family Member ID</label>
+              <input type="text" class="form-control" id="secondUserId" formControlName="secondUserId">
+            </div>
+            
+            <div class="mb-3">
+              <label for="relationType" class="form-label">Relationship Type</label>
+              <select class="form-select" id="relationType" formControlName="relationType">
+                <option value="">Select relationship type</option>
+                <option value="SPOUSE">Spouse</option>
+                <option value="CHILD">Child</option>
+                <option value="PARENT">Parent</option>
+                <option value="SIBLING">Sibling</option>
+                <option value="BROTHER">Brother</option>
+                <option value="SISTER">Sister</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!relationshipForm.valid">Add Relationship</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2>Relationships</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Family Member</th>
+                <th>Email</th>
+                <th>Relationship</th>
+                <th>Created At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let relationship of relationships">
+                <td>{{ relationship.familyMember.name }}</td>
+                <td>{{ relationship.familyMember.email }}</td>
+                <td>{{ relationship.relation }}</td>
+                <td>{{ relationship.createdAt | date }}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="deleteRelationship(relationship.familyMember.id)">Remove</button>
+                </td>
+              </tr>
+              <tr *ngIf="relationships.length === 0">
+                <td colspan="5" class="text-center">No relationships found</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Available Sports</h2>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sport of sports">
+                <td>{{ sport.name }}</td>
+                <td>{{ sport.description }}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm" (click)="subscribeSport(sport.id)">Subscribe</button>
+                </td>
+              </tr>
+              <tr *ngIf="sports.length === 0">
+                <td colspan="3" class="text-center">No sports available</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Add Sport Session</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="sportSessionForm" (ngSubmit)="addSportSession()">
+            <div class="mb-3">
+              <label for="sportId" class="form-label">Sport</label>
+              <select class="form-select" id="sportId" formControlName="sportId">
+                <option value="">Select sport</option>
+                <option *ngFor="let sport of sports" [value]="sport.id">{{ sport.name }}</option>
+              </select>
+            </div>
+            
+            <div class="mb-3">
+              <label for="startTime" class="form-label">Start Time</label>
+              <input type="datetime-local" class="form-control" id="startTime" formControlName="startTime">
+            </div>
+            
+            <div class="mb-3">
+              <label for="endTime" class="form-label">End Time</label>
+              <input type="datetime-local" class="form-control" id="endTime" formControlName="endTime">
+            </div>
+            
+            <div class="mb-  id="endTime" formControlName="endTime">
+            </div>
+            
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" class="form-control" id="location" formControlName="location">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!sportSessionForm.valid">Add Session</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="message" class="alert alert-info mt-3">
+    {{ message }}
+  </div>
+</div>
+
+<ng-template #noUser>
+  <div class="container">
+    <div class="alert alert-warning">
+      <h2>No user selected</h2>
+      <p>Please login or register a user first.</p>
+    </div>
+  </div>
+</ng-template>
+
