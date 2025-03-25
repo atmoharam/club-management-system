@@ -1,5 +1,7 @@
 package dev.members.infrastructure.model.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.common.domain.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,14 +24,15 @@ public class FamilyMember{
     @ColumnDefault("gen_random_uuid()")
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
+    @JsonIgnore
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "family_member_id")
     private User familyMember;

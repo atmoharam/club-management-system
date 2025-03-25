@@ -4,7 +4,7 @@ import dev.members.infrastructure.adapter.UserCheckinDB;
 import dev.members.infrastructure.adapter.UserDB;
 import dev.members.infrastructure.model.entites.User;
 import dev.members.infrastructure.model.entites.UserCheckIn;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,9 @@ import java.util.UUID;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor(onConstructor_ = {@Autowired})
 public class ActionsUseCase {
-    @Autowired
     UserCheckinDB userCheckinDB;
-    @Autowired
     UserDB userDB;
 
     public void execute(UUID actionId,UUID userId, String actionType){

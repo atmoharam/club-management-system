@@ -1,10 +1,8 @@
 package dev.sport.service.interface_adapters.rest;
 
 import dev.sport.service.application.SessionUseCase;
-import dev.sport.service.application.SportManagementUseCase;
 import dev.sport.service.infrastructure.model.entites.SportSession;
 import dev.sport.service.interface_adapters.dto.SessionDTO;
-import dev.sport.service.interface_adapters.dto.SportDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +11,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/sport/session")
-public class Controller {
+public class SessionsController {
     final SessionUseCase sessionUseCase;
     @Autowired
-    public Controller(SessionUseCase sessionUseCase) {
+    public SessionsController(SessionUseCase sessionUseCase) {
         this.sessionUseCase = sessionUseCase;
     }
 

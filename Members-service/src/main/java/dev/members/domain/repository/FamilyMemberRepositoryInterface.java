@@ -9,6 +9,5 @@ public interface FamilyMemberRepositoryInterface {
 
     public FamilyMember save(FamilyMember familyMember);
     public List<FamilyMember> getFamilyMembers(UUID userId);
-
-
+    public void deleteFamilyMember(UUID userId, UUID familyMemberId);
 }

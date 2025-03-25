@@ -6,6 +6,7 @@ import dev.sport.service.infrastructure.model.repository.SportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -31,6 +32,16 @@ public class SportDB implements SportRepositoryInterface {
     @Override
     public Optional<Sport> findById(UUID id) {
         return sportRepository.findById(id);
+    }
+
+    @Override
+    public void delete(Sport sport) {
+        sportRepository.delete(sport);
+    }
+
+    @Override
+    public List<Sport> findAll() {
+        return sportRepository.findAll();
     }
 
 }

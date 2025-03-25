@@ -19,7 +19,7 @@ public class Controller {
     @Autowired
     UserActions userActions;
     @PostMapping("check_in")
-    public ResponseEntity<ActionResponseDTO> ccheckIn(@RequestBody ActionRequestDTO actionRequestDTO){
+    public ResponseEntity<ActionResponseDTO> checkIn(@RequestBody ActionRequestDTO actionRequestDTO){
         return ResponseEntity.ok(userActions.execute(actionRequestDTO.getId() , actionRequestDTO.getGate() , String.valueOf(Action.Check_in)));
 
     }

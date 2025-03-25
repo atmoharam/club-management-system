@@ -2,7 +2,6 @@ package dev.sport.service.interface_adapters.dto;
 
 import lombok.*;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Setter
@@ -11,9 +10,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SessionDTO {
-    UUID SportId;
-    UUID TarinerId;
-    Instant startTime;
-    Instant endTime;
+    String sportId;
+    String tarinerId;
+    String startTime;
+    String endTime;
     String location;
 }

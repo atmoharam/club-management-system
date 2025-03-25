@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Builder
 @Setter
 @Getter
@@ -12,3 +14,5 @@ public class RelationDTO {
     private String secondUserId;
     private String relationType;
 }
+
+

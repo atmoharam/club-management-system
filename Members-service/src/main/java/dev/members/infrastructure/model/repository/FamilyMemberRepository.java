@@ -11,7 +11,8 @@ import java.util.UUID;
 public interface FamilyMemberRepository extends JpaRepository<FamilyMember, UUID> {
 
     List<FamilyMember> findAllByUser(User user);
+    List<FamilyMember> findAllByFamilyMember(User user);
     FamilyMember save(FamilyMember familyMember);
-
+    void deleteAllByUserAndFamilyMember(User user, User familyMember);
 
 }

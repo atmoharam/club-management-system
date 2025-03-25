@@ -53,7 +53,7 @@ public class ConfirmSubscription {
                         .amount(BigDecimal.valueOf(amountRand))
                         .timestamp(Instant.now())
                         .userId(userId)
-                        .status(amountRand >= 500 ? PaymentStatus.Failed : PaymentStatus.Completed)
+                        .status(amountRand >= 200 ? PaymentStatus.Failed : PaymentStatus.Completed)
                         .build();
         log.info("payment created {}" , paymentDomainEntity);
         Payment payment = paymentDB.save(paymentMapper.paymentDomainToPayment(paymentDomainEntity));
@@ -62,7 +62,7 @@ public class ConfirmSubscription {
                 SportSubscriptionDomainEntity.builder()
                         .payment(paymentDomainEntity)
                         .subscriptionStartDate(LocalDate.now())
-                        .subscriptionEndDate(LocalDate.now().minusDays(30))
+                        .subscriptionEndDate(LocalDate.now().plusDays(30))
                         .sportId(sportId)
                         .userId(userId)
                         .build();

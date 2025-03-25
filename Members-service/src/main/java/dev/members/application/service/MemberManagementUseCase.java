@@ -11,13 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Service
 @Slf4j
 @AllArgsConstructor(onConstructor_ = {@Autowired})
-public class CreateNewMemberUseCase {
+public class MemberManagementUseCase {
     private final UserDB userDB;
     private final MebershipRenewalService mebershipRenewalService;
+    private final RenewMembershipUseCase renewMembershipUseCase;
     private final UserMapper userMapper;
 
     public void createNewUser(UserDomainEntity userDomainEntity){
@@ -25,9 +27,11 @@ public class CreateNewMemberUseCase {
         if(user == null){
             userDomainEntity.setCreatedAt(Instant.now());
             userDomainEntity.setUpdatedAt(Instant.now());
-            mebershipRenewalService.renewMembership(userDomainEntity);
-            userDB.saveUser(userMapper.userDomainToUser(userDomainEntity));
+            userDomainEntity.setRenewalDate(LocalDate.now().minusDays(1));
+            mebershipRenewalService.initRenewMembership(userDomainEntity);
+            user = userDB.saveUser(userMapper.userDomainToUser(userDomainEntity));
+            renewMembershipUseCase.execute(user.getId());
         }
-
     }
+
 }

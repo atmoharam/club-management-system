@@ -17,7 +17,7 @@ public class FamilyMemberMapper {
     public FamilyMember familyMemberDomainEntityToFamilyMemberEntity(FamilyMemberDomainEntity familyMemberDomainEntity) {
         return FamilyMember.builder().
                 user(userMapper.userDomainToUser(familyMemberDomainEntity.getUser()))
-                .familyMember(userMapper.userDomainToUser(familyMemberDomainEntity.getUser()))
+                .familyMember(userMapper.userDomainToUser(familyMemberDomainEntity.getFamilyMember()))
                         .relation(familyMemberDomainEntity.getRelation().toString())
                                 .createdAt(familyMemberDomainEntity.getCreatedAt()).
                 build();

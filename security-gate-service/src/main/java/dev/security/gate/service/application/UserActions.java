@@ -9,6 +9,7 @@ import dev.security.gate.service.infrastructure.messaging.out.UserActionPublishe
 import dev.security.gate.service.infrastructure.model.entity.Member;
 import dev.security.gate.service.infrastructure.model.entity.SecurityLog;
 import dev.security.gate.service.interface_adapter.dto.ActionResponseDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class UserActions {
     @Autowired
@@ -42,7 +44,24 @@ public class UserActions {
                     .build();
         }
         SecurityLog securityLog = securityLogsDB.isUserLastActionCheckIn(userId).orElse(null);
-        if ( Action.Check_out.toString().equals(action) && securityLog == null){
+        if (
+                Action.Check_out.toString().equals(action) &&
+                securityLog != null &&
+                Action.Check_out.toString().equals(securityLog.getAction())
+        ){
+
+            return ActionResponseDTO.builder()
+                    .status("Failed")
+                    .message("User does not checked in")
+                    .build();
+        }
+
+        if (
+                Action.Check_in.toString().equals(action) &&
+                        securityLog != null &&
+                        Action.Check_in.toString().equals(securityLog.getAction())
+        ){
+
             return ActionResponseDTO.builder()
                     .status("Failed")
                     .message("User does not checked in")
@@ -55,7 +74,6 @@ public class UserActions {
                 .timestamp(Instant.now())
                 .action(action)
                 .build();
-
         securityLogsDB.save(object);
 
         SecurityAction securityAction = SecurityAction.newBuilder()
