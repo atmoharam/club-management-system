@@ -1,6 +1,7 @@
 package dev.members.infrastructure.adapter;
 
 import dev.members.domain.repository.UserSportRepositoryInterface;
+import dev.members.infrastructure.model.entites.User;
 import dev.members.infrastructure.model.entites.UserSport;
 import dev.members.infrastructure.model.repository.UserCheckinRepository;
 import dev.members.infrastructure.model.repository.UserSportRepository;
@@ -14,6 +15,8 @@ import java.util.UUID;
 public class UserSportDB implements UserSportRepositoryInterface {
     @Autowired
     private UserSportRepository userSportRepository;
+    @Autowired
+    private UserDB userDB;
 
     public UserSport save(UserSport userSport) {
         return userSportRepository.save(userSport);
@@ -22,6 +25,7 @@ public class UserSportDB implements UserSportRepositoryInterface {
         return userSportRepository.findById(id);
     }
     public Optional<UserSport> findByUserId(UUID userId) {
-        return userSportRepository.findByUserId(userId);
+        User user = userDB.getUserByID(userId).orElse(null);
+        return userSportRepository.findByUser(user);
     }
 }

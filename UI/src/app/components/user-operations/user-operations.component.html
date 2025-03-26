@@ -1,0 +1,223 @@
+<div class="container">
+  <h1 class="mb-4 fw-bold text-primary">
+    <i class="bi bi-person-plus-fill me-2"></i>User Operations
+  </h1>
+
+  <div class="mb-4">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'register'" (click)="setActiveTab('register')">
+          <i class="bi bi-person-plus me-2"></i>Register User
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'checkInOut'" (click)="setActiveTab('checkInOut')">
+          <i class="bi bi-door-open me-2"></i>Check In/Out
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab === 'login'" (click)="setActiveTab('login')">
+          <i class="bi bi-box-arrow-in-right me-2"></i>User Login
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Register User Form -->
+  <div class="card" *ngIf="activeTab === 'register'">
+    <div class="card-header bg-light">
+      <h2 class="mb-0 fs-5">
+        <i class="bi bi-person-plus me-2"></i>Register User
+      </h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter full name">
+          </div>
+          <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="text-danger small mt-1">
+            Name is required
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email address">
+          </div>
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger small mt-1">
+            Valid email is required
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label for="countryCode" class="form-label">Country Code</label>
+            <input type="text" class="form-control" id="countryCode" formControlName="countryCode">
+          </div>
+          <div class="col-md-9">
+            <label for="number" class="form-label">Phone Number</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+              <input type="text" class="form-control" id="number" formControlName="number" placeholder="Enter phone number">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="dateOfBirth" class="form-label">Date of Birth</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+            <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="street" class="form-label">Street</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+            <input type="text" class="form-control" id="street" formControlName="street" placeholder="Enter street address">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-8">
+            <label for="city" class="form-label">City</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-building"></i></span>
+              <input type="text" class="form-control" id="city" formControlName="city" placeholder="Enter city">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="zip" class="form-label">ZIP Code</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-mailbox"></i></span>
+              <input type="text" class="form-control" id="zip" formControlName="zip" placeholder="ZIP">
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">
+            <i class="bi bi-person-plus me-2"></i>Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Check In/Out Form -->
+  <div class="card" *ngIf="activeTab === 'checkInOut'">
+    <div class="card-header bg-light">
+      <h2 class="mb-0 fs-5">
+        <i class="bi bi-door-open me-2"></i>Check In/Out
+      </h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="checkActionForm" (ngSubmit)="onCheckAction()">
+        <div class="mb-3">
+          <label for="userId" class="form-label">User ID</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+            <input type="text" class="form-control" id="userId" formControlName="id" placeholder="Enter user ID">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="gate" class="form-label">Gate</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-door-closed"></i></span>
+            <input type="text" class="form-control" id="gate" formControlName="gate" placeholder="Enter gate number/name">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Action</label>
+          <div class="d-flex gap-4">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="checkIn" value="check_in" formControlName="action">
+              <label class="form-check-label" for="checkIn">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Check In
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="checkOut" value="check_out" formControlName="action">
+              <label class="form-check-label" for="checkOut">
+                <i class="bi bi-box-arrow-right me-1"></i> Check Out
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="!checkActionForm.valid">
+            <i class="bi bi-send me-2"></i>Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Login Form -->
+  <div class="card" *ngIf="activeTab === 'login'">
+    <div class="card-header bg-light">
+      <h2 class="mb-0 fs-5">
+        <i class="bi bi-box-arrow-in-right me-2"></i>User Login
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="mb-4">
+        <div class="btn-group w-100" role="group">
+          <button type="button" class="btn" [class.btn-primary]="loginMethod === 'id'" [class.btn-outline-primary]="loginMethod !== 'id'" (click)="setLoginMethod('id')">
+            <i class="bi bi-person-badge me-1"></i> Login by ID
+          </button>
+          <button type="button" class="btn" [class.btn-primary]="loginMethod === 'email'" [class.btn-outline-primary]="loginMethod !== 'email'" (click)="setLoginMethod('email')">
+            <i class="bi bi-envelope me-1"></i> Login by Email
+          </button>
+        </div>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="mb-4">
+          <label for="loginValue" class="form-label">{{ loginMethod === 'id' ? 'User ID' : 'Email' }}</label>
+          <div class="input-group">
+            <span class="input-group-text">
+              <i [class]="loginMethod === 'id' ? 'bi bi-person-badge' : 'bi bi-envelope'"></i>
+            </span>
+            <input type="text" class="form-control" id="loginValue" formControlName="loginValue"
+                   [placeholder]="loginMethod === 'id' ? 'Enter user ID' : 'Enter email address'">
+          </div>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="user" class="mt-4">
+        <h3 class="fs-5 mb-3">User Details</h3>
+        <div class="card bg-light">
+          <div class="card-body">
+            <div class="mb-2"><strong><i class="bi bi-person-badge me-2"></i>ID:</strong> {{ user.id }}</div>
+            <div class="mb-2"><strong><i class="bi bi-person me-2"></i>Name:</strong> {{ user.name }}</div>
+            <div class="mb-2"><strong><i class="bi bi-envelope me-2"></i>Email:</strong> {{ user.email }}</div>
+            <div class="mb-2"><strong><i class="bi bi-calendar me-2"></i>Date of Birth:</strong> {{ user.dateOfBirth }}</div>
+            <div class="mb-2"><strong><i class="bi bi-award me-2"></i>Membership Status:</strong> {{ user.membershipStatus }}</div>
+            <div><strong><i class="bi bi-calendar-check me-2"></i>Renewal Date:</strong> {{ user.renewalDate }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="actionResponse" class="alert alert-info mt-3">
+    <i class="bi bi-info-circle me-2"></i>{{ actionResponse }}
+  </div>
+</div>
+
