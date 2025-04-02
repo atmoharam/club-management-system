@@ -7,7 +7,7 @@ import { SecurityAction } from '../models/security/security-action';
   providedIn: 'root'
 })
 export class SecurityService {
-  private apiUrl = 'http://localhost:8531/security';
+  private apiUrl = 'http://localhost:8686/security';
 
   constructor(private http: HttpClient) { }
 

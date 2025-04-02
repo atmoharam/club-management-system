@@ -15,15 +15,13 @@ public class PhoneNumber {
     String number;
 
     public PhoneNumber(String number) {
-        String[] parts = number.split("-");
-        if (parts.length == 2) {
-            PhoneNumber.builder().countryCode(parts[0]).
-                    number(parts[1]).build();
-        }
+
+            PhoneNumber.builder().countryCode(number.substring(0,2)).
+                    number(number.substring(2)).build();
     }
 
     public String PhoneNumberString() {
-        return countryCode + "-" + number;
+        return countryCode + number;
     }
 
 }

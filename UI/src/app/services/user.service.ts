@@ -12,8 +12,8 @@ import { RelationshipDeleteRequest } from '../models/user/relationship-delete-re
   providedIn: 'root'
 })
 export class UserService {
-  private memberApiUrl = 'http://localhost:8568/member';
-  private securityApiUrl = 'http://localhost:8531/security';
+  private memberApiUrl = 'http://localhost:8686/member';
+  private securityApiUrl = 'http://localhost:8686/security';
 
   constructor(private http: HttpClient) { }
 
@@ -49,7 +49,7 @@ export class UserService {
 
   // Get all relationships for a user
   getRelationships(userId: string): Observable<Relationship[]> {
-    return this.http.post<Relationship[]>(`${this.memberApiUrl}/relationship/all`, { id: userId });
+    return this.http.get<Relationship[]>(`${this.memberApiUrl}/relationship/all/${userId}`,);
   }
 
   // Delete relationship

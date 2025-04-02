@@ -9,7 +9,7 @@ import { SportSessionRequest } from '../models/sport/sport-session-request';
   providedIn: 'root'
 })
 export class SportService {
-  private apiUrl = 'http://localhost:8577/sport';
+  private apiUrl = 'http://localhost:8686/sport';
 
   constructor(private http: HttpClient) { }
 

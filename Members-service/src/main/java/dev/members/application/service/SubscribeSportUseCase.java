@@ -43,4 +43,8 @@ public class SubscribeSportUseCase {
     public boolean isSuccess(UUID userId) {
         return userSportDB.findByUserId(userId).isPresent();
     }
+
+    public UserSport getUserSport(UUID userId) {
+        return userSportDB.findByUserId(userId).orElse(null);
+    }
 }

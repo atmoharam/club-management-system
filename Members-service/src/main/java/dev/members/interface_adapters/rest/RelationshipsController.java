@@ -33,10 +33,10 @@ public class RelationshipsController {
 
         );
     }
-    @GetMapping("/all")
-    public ResponseEntity<List<FamilyMember>>getAll(@RequestBody GenericUUID req) {
+    @GetMapping("/all/{id}")
+    public ResponseEntity<List<FamilyMember>>getAll(@PathVariable UUID id) {
         return ResponseEntity.ok(
-                relationshipsUseCase.findAll(req.getId())
+                relationshipsUseCase.findAll(id)
         );
     }
 
